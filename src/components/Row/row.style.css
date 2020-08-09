@@ -1,0 +1,26 @@
+.movie-posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.movie-posters::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.movie-poster:hover {
+  transform: scale(1.08);
+}
+
+.large-image {
+  max-height: 250px;
+}

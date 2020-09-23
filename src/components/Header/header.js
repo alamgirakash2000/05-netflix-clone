@@ -13,20 +13,13 @@ function Header() {
       }
     });
     return () => {
-      window.removeEventListener("scroll");
+      // window.removeEventListener("scroll");
     };
   }, []);
 
   return (
     <div className={`navber ${show && "nav-black"}`}>
-      <img
-        className="nav-logo"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png"
-        alt="Netflix Logo"
-      />
-
-      <h1>Clone By Akash</h1>
-
+      <h3 className="logo">MyFlix</h3>
       <img
         className="nav-avater"
         src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png"

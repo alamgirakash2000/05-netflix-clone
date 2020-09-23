@@ -6,10 +6,16 @@
   position: fixed;
   justify-content: space-between;
   transition: all 0.5s ease-in;
+  z-index: 100;
+}
+.logo {
+  font-family: "Shojumaru", cursive;
+  color: black;
+  margin-left: 1rem;
 }
 .navber img {
   height: 100%;
 }
 .nav-black {
-  background: black;
+  background: rgb(19, 224, 197);
 }

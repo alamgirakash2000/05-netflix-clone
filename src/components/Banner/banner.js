@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./banner.style.css";
 import axios from "../axios";
+import { useStateValue } from "../../Context API/StateProvider";
+import { useHistory } from "react-router-dom";
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
 function Banner({ fetchUrl }) {
+  const [{ movieDetails }, dispatch] = useStateValue();
+  const history = useHistory();
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
@@ -19,15 +23,13 @@ function Banner({ fetchUrl }) {
     fetchData();
   }, [Banner]);
 
-  function truncate(s, n) {
-    console.log(s, n);
-
-    // if (s.length > n) {
-    //   return "yes";
-    // } else {
-    //   return "no";
-    // }
-  }
+  const handleClick = () => {
+    dispatch({
+      type: "SET_MOVIE",
+      movie: movie,
+    });
+    history.push("/details");
+  };
 
   return (
     <header
@@ -43,10 +45,16 @@ function Banner({ fetchUrl }) {
       <div className="banner-content">
         <h1>{movie.title || movie.name || movie.original_name}</h1>
         <div className="banner-buttons">
-          <button className="banner-button">Play</button>
+          <button className="banner-button" onClick={handleClick}>
+            Play
+          </button>
           <button className="banner-button">My List</button>
         </div>
-        <h2 className="banner-description">{movie.overview}</h2>
+        <h2 className="banner-description">
+          {movie.overview?.length > 300
+            ? movie.overview.slice(0, 297) + "..."
+            : movie.overview}
+        </h2>
       </div>
       <div className="fade"></div>
     </header>
